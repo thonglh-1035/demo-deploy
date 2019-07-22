@@ -1,0 +1,13 @@
+[Unit]
+Description = puma daemon
+
+[Service]
+WorkingDirectory = /home/ec2-user/rails_app/demo-deploy/current
+ExecStart = ./home/ec2-user/rails_app/demo-deploy/current/config/deploy/common/puma.sh
+Restart = always
+Type = simple
+User=ec2-user
+TimeoutSec=15
+
+[Install]
+WantedBy = multi-user.target
