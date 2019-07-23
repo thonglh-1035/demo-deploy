@@ -77,11 +77,11 @@ namespace :deploy do
       end
     end
   end
-
+  after :create_database, restart
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       within release_path do
-        execute "/bin/bash #{ENV["APP_ROOT"]}/config/deploy/common/puma.sh"
+        execute "/bin/bash /home/ec2-user/rails_app/demo-deploy/current/config/deploy/common/puma.sh"
       end
     end
   end
